@@ -1,9 +1,12 @@
-package com.solve.spring.web;
+package com.solve.spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.solve.spring.enums.EnumCategoryGroup;
+
 
 @Controller
 public class UserController {
@@ -21,6 +24,9 @@ public class UserController {
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
+    	
+    	model.addAttribute("EnumCategory", EnumCategoryGroup.values());
+    	
         return "welcome";
     }
 }
