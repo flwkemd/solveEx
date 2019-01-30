@@ -87,9 +87,8 @@
 			</div>
 		</div>
 		<hr>
-				<div class="paging-layout center-block"></div>
 	</div>
-	
+			<div class="paging-layout center-block"></div>
 </div>
 
 	<script type="text/javascript">
@@ -114,7 +113,7 @@
 									$("#place > ul").html("");
 									$("#place > #resultMessage").show();
 								} else {
-									<c:if test="${not res.meta.is_end}">
+									<c:if test="${not empty res.meta.total_count}">
 									$('.paging-layout').bootpag({
 									    total: $(res.meta.total_count),
 									    page:  $(res.meta.pageable_count),
