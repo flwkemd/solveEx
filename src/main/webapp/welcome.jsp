@@ -23,6 +23,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  
+<script type="text/javascript" src="${contextPath}/resources/js/jquery.bootpag.min.js"></script>  
 </head>
 <body>
 <div class="container">
@@ -43,8 +45,6 @@
 				<div class="col-12">
 					<form id="search_form" name="search_form" onsubmit="return submitSearch();">
 						<input type="hidden" name="page" value="1">
-						<input type="hidden" name="page" value="${placePage.number}">
-					    <input type="hidden" name="size" value="${placePage.size }">
 						<div class="form-row">
 							<div class="col">
 								<div class="form-group">
@@ -87,9 +87,11 @@
 			</div>
 		</div>
 		<hr>
+				<div class="paging-layout center-block"></div>
 	</div>
 	
 </div>
+
 	<script type="text/javascript">
 		function submitSearch(page) {
 			var pg = page ? page : 1;
@@ -112,6 +114,29 @@
 									$("#place > ul").html("");
 									$("#place > #resultMessage").show();
 								} else {
+									<c:if test="${not res.meta.is_end}">
+									$('.paging-layout').bootpag({
+									    total: $(res.meta.total_count),
+									    page:  $(res.meta.pageable_count),
+									    maxVisible: 10,
+									    leaps: true,
+									    firstLastUse: true,
+									    first: '←',
+									    last: '→',
+									    wrapClass: 'pagination',
+									    activeClass: 'active',
+									    disabledClass: 'disabled',
+									    nextClass: 'next',
+									    prevClass: 'prev',
+									    lastClass: 'last',
+									    firstClass: 'first'
+									}).on("page", function(event, num){
+										console.log(num);
+										var frm = document.search_form
+										frm.page.value = num-1;
+										frm.submit();
+									});
+									</c:if>
 									$("#place > #resultMessage").hide();
 									var html = "";
 									$(res.documents)
@@ -211,8 +236,8 @@
 
 
 <!-- /container -->
-<script type="text/javascript" src="${contextPath}/resources/js/jquery.paging.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
