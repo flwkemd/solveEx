@@ -92,7 +92,7 @@
 </div>
 	<script type="text/javascript">
 		function submitSearch(page) {
-			var pg = page ? page : page+1;
+			var pg = page ? page : 1;
 			var frm = document.search_form;
 			frm.page.value = pg;
 			if (frm.searchWord.value == "") {
