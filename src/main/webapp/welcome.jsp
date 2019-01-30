@@ -141,7 +141,7 @@
 																+ "</a>"
 																+" <button type='button' class='btn btn-primary btn-bookmark add' data-isbn='"+isbn+"'>북마크</button>"
 																+"</dt>";
-														html += "<dd>
+														html += "<dd>"
 																+ "</div><div class='right'>전화번호: "
 																+ phone
 																+ "<br> 카테고리: "
