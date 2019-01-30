@@ -24,7 +24,7 @@ public class ApiService {
 	public Map<String, Object> placeSearch(String searchWord, String category) {
 		//
 		System.out.println("ApiService");
-		final String URL = API_PLACE_URL + "&category_group_code=" + category;
+		final String URL = API_PLACE_URL + "?query="+searchWord+ "&category_group_code=" + category;
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Authorization", "KakaoAK " + API_REST_API_KEY);
 		Map<String, String> params = new HashMap<>();

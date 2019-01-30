@@ -38,11 +38,13 @@
 
 	<div class="main-top-layout">
 		<div class="container">
-			<h1>책 검색</h1>
+			<h1>키워드 검색</h1>
 			<div class="row">
 				<div class="col-12">
 					<form id="search_form" name="search_form" onsubmit="return submitSearch();">
 						<input type="hidden" name="page" value="1">
+						<input type="hidden" name="page" value="${placePage.number}">
+					    <input type="hidden" name="size" value="${placePage.size }">
 						<div class="form-row">
 							<div class="col">
 								<div class="form-group">
@@ -86,9 +88,11 @@
 		</div>
 		<hr>
 	</div>
+	
+</div>
 	<script type="text/javascript">
 		function submitSearch(page) {
-			var pg = page ? page : 1;
+			var pg = page ? page : page+1;
 			var frm = document.search_form;
 			frm.page.value = pg;
 			if (frm.searchWord.value == "") {
@@ -135,13 +139,14 @@
 														html += "<dl><dt><a href='./detail?place_name="
 																+ place_name
 																+ "'>"
-																+ this.category_group_name
+																+ this.place_name
 																+ " | "
-																+ this.phone
+																+ this.road_address_name
 																+ "</a>"
-																+" <button type='button' class='btn btn-primary btn-bookmark add' data-isbn='"+isbn+"'>북마크</button>"
+																+" <button type='button' class='btn btn-primary btn-bookmark add' data-isbn='"+place_name+"'>북마크</button>"
 																+"</dt>";
-														html += "<dd>"
+														html += "<dd><div class='left'>"
+																+ place_name
 																+ "</div><div class='right'>전화번호: "
 																+ phone
 																+ "<br> 카테고리: "
@@ -175,24 +180,39 @@
 			return false;
 		}
 
-		$(document).ready(
-				function() {
-					$("#place > .list-group").on("mouseenter",
-							".list-group-item", function() {
-								$(this).find("dd").show();
-							});
-					$("#place > .list-group").on("mouseleave",
-							".list-group-item", function() {
-								$(this).find("dd").hide();
-							});
-					
-					$("#place > .list-group").on("click", ".btn-bookmark.add", btnBookmark);
-				});
+		/* $(document).ready(function() {
+			<c:if test="${not empty placePage.content }">
+			$('.paging-layout').bootpag({
+			    total: ${placePage.totalPages},
+			    page: ${placePage.number+1},
+			    maxVisible: 10,
+			    leaps: true,
+			    firstLastUse: true,
+			    first: '←',
+			    last: '→',
+			    wrapClass: 'pagination',
+			    activeClass: 'active',
+			    disabledClass: 'disabled',
+			    nextClass: 'next',
+			    prevClass: 'prev',
+			    lastClass: 'last',
+			    firstClass: 'first'
+			}).on("page", function(event, num){
+				console.log(num);
+				var frm = document.searchForm
+				frm.page.value = num-1;
+				frm.submit();
+			});
+			</c:if>
+		}); */
+
+		
 	</script>
 
 
-</div>
 <!-- /container -->
+<script type="text/javascript" src="${contextPath}/resources/js/jquery.paging.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>

@@ -40,7 +40,6 @@ public class AjaxController {
 			@RequestParam("searchWord") String searchWord,
 			@RequestParam(name = "category", defaultValue = "") String category) {
 
-		System.out.println("ajaxController");
 		Map<String, Object> result = apiService.placeSearch(searchWord, category);
 		
 		return result;
