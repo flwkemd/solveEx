@@ -32,7 +32,7 @@ public class AjaxController {
 	
 	@Autowired
 	PlaceRankService placeRankService;
-
+	
 	/**
 	 * 장소 검색 restAPI
 	 * 
@@ -52,8 +52,6 @@ public class AjaxController {
 		}else {
 			placeRankService.save(new PlaceRank(searchWord, 1));
 		}
-		
-		placeRankService.findAllByOrdercntDesc();
 		
 		Map<String, Object> result = apiService.placeSearch(searchWord, category);
 		
