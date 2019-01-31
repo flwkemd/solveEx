@@ -56,6 +56,12 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.5.4</version>
 		</dependency>
+		
+				<!-- h2 database -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>

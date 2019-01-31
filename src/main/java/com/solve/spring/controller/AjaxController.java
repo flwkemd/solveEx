@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.solve.spring.enums.EnumCategoryGroup;
+import com.solve.spring.model.PlaceRank;
 import com.solve.spring.service.ApiService;
+import com.solve.spring.service.PlaceRankService;
 
 @RestController
 @RequestMapping("ajax/")
@@ -26,6 +29,9 @@ public class AjaxController {
 
 	@Autowired
 	ApiService apiService;
+	
+	@Autowired
+	PlaceRankService placeRankService;
 
 	/**
 	 * 장소 검색 restAPI
@@ -39,7 +45,16 @@ public class AjaxController {
 	public Map<String, Object> placeSearch(HttpServletRequest req, HttpServletResponse res,
 			@RequestParam("searchWord") String searchWord,
 			@RequestParam(name = "category", defaultValue = "") String category) {
-
+		
+		if(placeRankService.getPlace(searchWord) != null) {
+			placeRankService.save(new PlaceRank(searchWord, placeRankService.getPlace(searchWord).getCnt()+1));
+			
+		}else {
+			placeRankService.save(new PlaceRank(searchWord, 1));
+		}
+		
+		placeRankService.findAllByOrdercntDesc();
+		
 		Map<String, Object> result = apiService.placeSearch(searchWord, category);
 		
 		return result;

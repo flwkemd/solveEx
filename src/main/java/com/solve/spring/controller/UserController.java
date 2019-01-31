@@ -1,9 +1,13 @@
 package com.solve.spring.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.solve.spring.enums.EnumCategoryGroup;
 
@@ -29,4 +33,17 @@ public class UserController {
     	
         return "welcome";
     }
+    
+	@RequestMapping("/detail")
+	public String detail(HttpServletRequest req, HttpServletResponse res, Model model,
+			@RequestParam("y") String y,
+			@RequestParam("x") String x) {
+		try {
+			model.addAttribute("y", y);
+			model.addAttribute("x", x);
+			return "/detail";
+		} catch (Exception e) {
+			return "redirect:/login";
+		}
+	}
 }

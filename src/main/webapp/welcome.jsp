@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Create an account</title>
+    <title>키워드 검색</title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -84,6 +84,11 @@
 					</ul>
 					<div id="resultMessage" class="alert" role="alert" style="display: none;">검색된 장소가 없습니다.</div>
 				</div>
+				<div id ="placeRank">
+					<ol class="list2-group">
+						
+					</ol>
+				</div>
 			</div>
 		</div>
 		<hr>
@@ -113,7 +118,7 @@
 									$("#place > ul").html("");
 									$("#place > #resultMessage").show();
 								} else {
-									<c:if test="${not empty res.meta.total_count}">
+									/* <c:if test="${not empty res.meta.total_count}">
 									$('.paging-layout').bootpag({
 									    total: $(res.meta.total_count),
 									    page:  $(res.meta.pageable_count),
@@ -135,13 +140,14 @@
 										frm.page.value = num-1;
 										frm.submit();
 									});
-									</c:if>
+									</c:if> */
 									$("#place > #resultMessage").hide();
 									var html = "";
 									$(res.documents)
 											.each(
 													function(idx) {
-														var category_group_name = "", phone = "", place_name = "";
+														var category_group_name = "", phone = "", place_name = "",
+														y="", x="";
 														$(this.category_group_name)
 																.each(
 																		function() {
@@ -152,6 +158,16 @@
 																		function() {
 																			phone += (this + " ")
 																		});
+														$(this.y)
+														.each(
+																function() {
+																	y += (this + " ")
+																});
+														$(this.x)
+														.each(
+																function() {
+																	x += (this + " ")
+																});
 														var arr_place_name = this.place_name.split(" ");
 														if(arr_place_name.length>1){
 															place_name = arr_place_name[1];
@@ -160,14 +176,13 @@
 														}
 
 														html += "<li class='list-group-item'>";
-														html += "<dl><dt><a href='./detail?place_name="
-																+ place_name
+														html += "<dl><dt><a href='./detail?y="
+																+ y
+																+"'&x='"
+																+ x
 																+ "'>"
 																+ this.place_name
-																+ " | "
-																+ this.road_address_name
 																+ "</a>"
-																+" <button type='button' class='btn btn-primary btn-bookmark add' data-isbn='"+place_name+"'>북마크</button>"
 																+"</dt>";
 														html += "<dd><div class='left'>"
 																+ place_name
@@ -176,6 +191,13 @@
 																+ "<br> 카테고리: "
 																+ category_group_name
 																+ "</div></dd></dl></li>";
+														html += "<li class='list2-group-item'>";
+															for(var i=0; i<10; i++){
+																html += "<li>"	
+																	 += $(placeRank.searchWord);
+																html += "</li>"	
+																}
+															 += "</li>";
 													});
 									if (!res.meta.is_end) {
 										html += "<li><button class='btn btn-primary btn-lg btn-block' onclick='submitSearch("
