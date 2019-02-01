@@ -16,4 +16,5 @@ public class SearchRank {
 	private Long id;
 	private String searchword;
 	private int count;
+	
 }
