@@ -34,7 +34,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+        <h2>반갑습니다 ${pageContext.request.userPrincipal.name} 님 | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
 
     </c:if>
 
@@ -84,11 +84,17 @@
 					</ul>
 					<div id="resultMessage" class="alert" role="alert" style="display: none;">검색된 장소가 없습니다.</div>
 				</div>
-				<div id ="placeRank">
-					<ol class="list2-group">
-						
-					</ol>
-				</div>
+				
+ 				<div id ="searchRank">
+					<ul class="list2-group">
+<%-- 									<c:if test="${not empty searchRank}">
+							<c:forEach var="searchRank" items="${searchRank}" begin=0 end=1 step=1 varStatus="status">     
+										<li>${searchRank.searchword}</li>
+							</c:forEach>
+									</c:if> --%>
+					</ul>
+				</div> 
+				
 			</div>
 		</div>
 		<hr>
@@ -147,7 +153,7 @@
 											.each(
 													function(idx) {
 														var category_group_name = "", phone = "", place_name = "",
-														y="", x="";
+														y="", x="", address_name="";
 														$(this.category_group_name)
 																.each(
 																		function() {
@@ -168,36 +174,44 @@
 																function() {
 																	x += (this + " ")
 																});
+														$(this.address_name)
+														.each(
+																function() {
+																	address_name += (this + " ")
+																});
 														var arr_place_name = this.place_name.split(" ");
 														if(arr_place_name.length>1){
 															place_name = arr_place_name[1];
 														}else{
 															place_name = arr_place_name[0];
 														}
+														
 
 														html += "<li class='list-group-item'>";
 														html += "<dl><dt><a href='./detail?y="
-																+ y
-																+"'&x='"
-																+ x
-																+ "'>"
+																+ this.y
+																+"&x="
+																+ this.x
+																+"&place_name="
+																+ encodeURI(this.place_name);
+														html +=  "'>"
 																+ this.place_name
 																+ "</a>"
 																+"</dt>";
 														html += "<dd><div class='left'>"
-																+ place_name
+																+ this.address_name
 																+ "</div><div class='right'>전화번호: "
-																+ phone
+																+ this.phone
 																+ "<br> 카테고리: "
-																+ category_group_name
+																+ this.category_group_name
 																+ "</div></dd></dl></li>";
 														html += "<li class='list2-group-item'>";
-															for(var i=0; i<10; i++){
-																html += "<li>"	
-																	 += $(placeRank.searchWord);
-																html += "</li>"	
-																}
-															 += "</li>";
+															/* for(var i=0; i<10; i++){
+																html += "<dl>"	
+																	 += $(placeRank);
+																html += "</dl>"	
+																} */
+														html	  += "</li>";
 													});
 									if (!res.meta.is_end) {
 										html += "<li><button class='btn btn-primary btn-lg btn-block' onclick='submitSearch("

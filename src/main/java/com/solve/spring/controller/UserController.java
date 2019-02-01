@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.solve.spring.enums.EnumCategoryGroup;
-import com.solve.spring.model.PlaceRank;
-import com.solve.spring.service.PlaceRankService;
+import com.solve.spring.model.SearchRank;
 
+import com.solve.spring.service.SearchRankService;
 
 @Controller
 public class UserController {
 
 	@Autowired
-	PlaceRankService placeRankService;
+	SearchRankService searchRankService;
 	
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
@@ -37,10 +37,13 @@ public class UserController {
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
     	
-    	List<PlaceRank> placeRank = placeRankService.findAllByOrdercntDesc();
     	
-    	
-    	model.addAttribute("EnumCategory", EnumCategoryGroup.values());
+    		List<SearchRank> searchRank = searchRankService.findAllByOrderCountDesc();
+    		System.out.println("a: "+searchRank);
+    		
+    		model.addAttribute("searchRank", searchRank);
+
+    		model.addAttribute("EnumCategory", EnumCategoryGroup.values());
     	
         return "welcome";
     }

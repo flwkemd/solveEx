@@ -5,9 +5,9 @@ import java.util.List;
 import com.solve.spring.model.PlaceRank;
 
 public interface PlaceRankService {
-	void save(PlaceRank placeRank);
+	 void save(PlaceRank placeRank);
 	
-	public PlaceRank getPlace(String searchWord);
+	 PlaceRank getPlace(String searchWord);
 
-	public List<PlaceRank> findAllByOrdercntDesc();
+	 public List<PlaceRank> findAll();
 }

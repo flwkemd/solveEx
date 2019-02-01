@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>키워드 검색</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  
+<script type="text/javascript" src="${contextPath}/resources/js/jquery.bootpag.min.js"></script>  
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <style type="text/css">
 body.loading .container .media {
@@ -39,22 +41,10 @@ body.loading .container .media {
 					y  : <span class="place-y"></span>
 				</p>
 				<p>
-					다음 지도 바로가기 : <a href=><span class="place-place_url"></span></a>
+					다음 지도 바로가기 : <a href="<span class=’place-place_url’></span>"></a>
 				</p>
-			</div>
-			
-			<div id="map" style="width:500px;height:400px;"></div>
-				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9ec3ac48e69bf6523be0fab261bcf934"></script>
-				<script>
-					var container = document.getElementById('map');
-					var options = {
-						center: new daum.maps.LatLng(${y}, ${x}),
-						level: 3
-					};
-			
-					var map = new daum.maps.Map(container, options);
-				</script>
-						
+			</div>	
+			<div id="map" style="width:500px;height:400px;"></div>						
 		</div>
 
 	<script type="text/javascript">
@@ -73,8 +63,6 @@ body.loading .container .media {
 								$(doc.phone).each(function() {
 									phone += (this + " ")
 								});
-								$(".place-img").html(thumbnail);
-								$(".place-title").text(doc.title);
 								$(".place-place_name").text(doc.place_name);
 								$(".place-category_name").text(doc.category_name);
 								$(".place-phone").text(doc.phone);
@@ -106,5 +94,41 @@ body.loading .container .media {
 			init();
 		});
 	</script>
+
+
+				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79dce2c081dab1506bf17e230df5503f&libraries=services,clusterer,drawing"></script>
+				<script>
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				    mapOption = { 
+				        center: new daum.maps.LatLng(${y}, ${x}), // 지도의 중심좌표
+				        level: 3 // 지도의 확대 레벨
+				    };
+				
+				var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+				
+				// 마커가 표시될 위치입니다 
+				var markerPosition  = new daum.maps.LatLng(${y}, ${x}); 
+				
+				// 마커를 생성합니다
+				var marker = new daum.maps.Marker({
+				    position: markerPosition
+				});
+				
+				// 마커가 지도 위에 표시되도록 설정합니다
+				marker.setMap(map);
+
+				// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+				// marker.setMap(null);    
+				</script>
+				
+<br>
+<div><button class="'btn btn-primary btn-sm btn-block'" onclick="goBack()">Go Back</button></div>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 </html>

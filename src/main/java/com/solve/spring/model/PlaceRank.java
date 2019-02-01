@@ -27,4 +27,22 @@ public class PlaceRank {
 		this.searchWord = searchWord;
 		this.cnt = cnt;
 	}
+
+	public String getSearchWord() {
+		return searchWord;
+	}
+
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
+
+	public int getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	
+	
 }

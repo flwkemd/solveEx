@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.solve.spring.enums.EnumCategoryGroup;
@@ -16,10 +15,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class ApiService {
-
-	@Autowired
-	PlaceRankService placeRankService;
-	
 	private static final Logger logger = LoggerFactory.getLogger(ApiService.class);
 
 	private static final String API_REST_API_KEY = "9ec3ac48e69bf6523be0fab261bcf934";
@@ -57,7 +52,7 @@ public class ApiService {
 	* 데이터 참조 :
 	* https://developers.kakao.com/docs/restapi/search#%EC%B1%85-%EA%B2%80%EC%83%89
 	* 
-	* @param ISBN
+	* @param place_name
 	* @return JSON -> Map<String,Object>
 	*/
 	public Map<String, Object> getPlace(String place_name) {
