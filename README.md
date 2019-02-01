@@ -1,7 +1,5 @@
 # searchSomething
 
-![build-status](https://travis-ci.com/flwkemd/solveEx.svg?branch=master)
-
 카카오 검색 API 를 이용해 키워드 장소 검색 서비스 개발 / 로그인기반 / 장소 상세 조회/ 인기 검색어 목록 
 
 > * 포트는 8081 을 사용합니다. (application.properties 에서 수정 가능.)

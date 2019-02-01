@@ -49,7 +49,7 @@ public class AjaxController {
 		searchRank.setCount(1);
 		searchRankService.save(searchRank);
 		}else {
-			searchRankService.findBySearchword(searchword).setCount(searchRankService.findBySearchword(searchword).getCount()+1);
+			searchRankService.updateCount(searchRankService.findBySearchword(searchword));	
 		}		
 				
 		Map<String, Object> result = apiService.placeSearch(searchword, category);

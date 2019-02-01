@@ -11,5 +11,7 @@ public interface SearchRankService {
 	SearchRank findBySearchword(String searchword);
 
 	SearchRank save(SearchRank searchRank);
+	
+	SearchRank updateCount(SearchRank searchRank);
 
 }

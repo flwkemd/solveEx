@@ -41,10 +41,11 @@ body.loading .container .media {
 					y  : <span class="place-y"></span>
 				</p>
 				<p>
-					다음 지도 바로가기 : <a href="<span class=’place-place_url’></span>"></a>
+					다음 지도 바로가기 : <a href="#"><span class="place-place_url" onclick = location.href=></span></a>
 				</p>
 			</div>	
-			<div id="map" style="width:500px;height:400px;"></div>						
+			<div id="map" style="width:500px;height:400px;"></div>	
+			<div><button class="'btn btn-primary btn-sm btn-block'" onclick="goBack()">Go Back</button></div>					
 		</div>
 
 	<script type="text/javascript">
@@ -122,7 +123,7 @@ body.loading .container .media {
 				</script>
 				
 <br>
-<div><button class="'btn btn-primary btn-sm btn-block'" onclick="goBack()">Go Back</button></div>
+
 <script>
 function goBack() {
   window.history.back();

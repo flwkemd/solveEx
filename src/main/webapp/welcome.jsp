@@ -68,6 +68,25 @@
 									<div><button class="btn btn-primary" type="submit">검색</button></div>
 								</div>
 							</div>
+							
+							<hr>
+							<div class="col">
+								<div class="form-group">
+									<label for="input-searchword">검색어 순위</label>
+										<div id ="searchRank">
+											<ol start="1" class="list2-group">
+												<c:if test="${not empty searchRank}">
+													<c:forEach var="searchRank" items="${searchRank}" varStatus="status">
+														<c:if test="${status.count < 6 }">
+															<li>${searchRank.searchword}</li>
+														</c:if>
+													</c:forEach>
+												</c:if> 
+											</ol>
+										</div>
+								</div>	
+							</div>
+										
 						</div>
 					</form>
 				</div>
@@ -84,17 +103,6 @@
 					</ul>
 					<div id="resultMessage" class="alert" role="alert" style="display: none;">검색된 장소가 없습니다.</div>
 				</div>
-				
- 				<div id ="searchRank">
-					<ul class="list2-group">
-<%-- 									<c:if test="${not empty searchRank}">
-							<c:forEach var="searchRank" items="${searchRank}" begin=0 end=1 step=1 varStatus="status">     
-										<li>${searchRank.searchword}</li>
-							</c:forEach>
-									</c:if> --%>
-					</ul>
-				</div> 
-				
 			</div>
 		</div>
 		<hr>

@@ -41,5 +41,13 @@ public class SearchRankServiceImpl implements SearchRankService {
 		return new Sort(Sort.Direction.DESC, "count");
 	}
 
+	@Override
+	public SearchRank updateCount(SearchRank searchRank) {
+		
+		searchRank.setCount(searchRank.getCount()+1);
+		
+		return searchRankRepository.save(searchRank);
+	}
+
 }
 
