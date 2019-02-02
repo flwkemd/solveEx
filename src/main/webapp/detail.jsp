@@ -41,7 +41,7 @@ body.loading .container .media {
 					y  : <span class="place-y"></span>
 				</p>
 				<p>
-					다음 지도 바로가기 : <a href="#"><span class="place-place_url" onclick = location.href=></span></a>
+					다음 지도 바로가기 : <a href='javascript:void(0);' onclick="func(); return false;" ><span id="url" class="place-place_url"></span></a>
 				</p>
 			</div>	
 			<div id="map" style="width:500px;height:400px;"></div>	
@@ -91,8 +91,16 @@ body.loading .container .media {
 					});
 		}
 
+		function func(){
+				var place_url = $("#url").text();
+				window.location.href=place_url;
+			}
+
 		$(document).ready(function() {
 			init();
+			var url = document.getElementById("url").text;
+			console.log(url);
+
 		});
 	</script>
 
