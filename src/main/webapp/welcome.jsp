@@ -201,7 +201,7 @@
 																+"&x="
 																+ this.x
 																+"&place_name="
-																+ encodeURI(this.place_name);
+																+ encodeURI(place_name.split(" "));
 														html +=  "'>"
 																+ this.place_name
 																+ "</a>"
@@ -213,13 +213,6 @@
 																+ "<br> 카테고리: "
 																+ this.category_group_name
 																+ "</div></dd></dl></li>";
-														html += "<li class='list2-group-item'>";
-															/* for(var i=0; i<10; i++){
-																html += "<dl>"	
-																	 += $(placeRank);
-																html += "</dl>"	
-																} */
-														html	  += "</li>";
 													});
 									if (!res.meta.is_end) {
 										html += "<li><button class='btn btn-primary btn-lg btn-block' onclick='submitSearch("

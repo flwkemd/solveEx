@@ -26,10 +26,10 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
         if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+            model.addAttribute("error", "입력한 아이디와 비밀번호가 일치하지 않습니다.");
 
         if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+            model.addAttribute("message", "로그아웃 하였습니다.");
 
         return "login";
     }
@@ -37,9 +37,7 @@ public class UserController {
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
     	
-    	
     		List<SearchRank> searchRank = searchRankService.findAllByOrderCountDesc();
-    		System.out.println("a: "+searchRank);
     		
     		model.addAttribute("searchRank", searchRank);
 

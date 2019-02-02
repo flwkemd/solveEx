@@ -13,5 +13,4 @@ public interface SearchRankService {
 	SearchRank save(SearchRank searchRank);
 	
 	SearchRank updateCount(SearchRank searchRank);
-
 }
