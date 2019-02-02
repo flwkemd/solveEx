@@ -14,5 +14,5 @@ public interface SearchRankRepository extends CrudRepository<SearchRank, Long> {
 	SearchRank findBySearchword(String searchword);
 
 	List<SearchRank> findAll(Sort orderBycntDesc);
-
+  
 }

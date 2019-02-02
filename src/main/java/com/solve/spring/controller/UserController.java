@@ -19,7 +19,7 @@ import com.solve.spring.service.SearchRankService;
 
 @Controller
 public class UserController {
-
+ 
 	@Autowired
 	SearchRankService searchRankService;
 	

@@ -13,7 +13,7 @@
 <style type="text/css">
 body.loading .container .media {
 	visibility: hidden;
-}
+} 
 </style>
 </head>
 <body class="loading">

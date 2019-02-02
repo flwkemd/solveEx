@@ -9,7 +9,7 @@ public interface SearchRankService {
 	List<SearchRank> findAllByOrderCountDesc();
 	
 	SearchRank findBySearchword(String searchword);
-
+ 
 	SearchRank save(SearchRank searchRank);
 	
 	SearchRank updateCount(SearchRank searchRank);

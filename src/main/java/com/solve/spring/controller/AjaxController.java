@@ -26,7 +26,7 @@ public class AjaxController {
 
 	@Autowired
 	ApiService apiService;
-	
+	 
 	@Autowired
 	SearchRankService searchRankService;
 	

@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 @Entity
 public class SearchRank {
-
+ 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;

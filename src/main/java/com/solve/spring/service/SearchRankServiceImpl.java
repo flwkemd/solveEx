@@ -14,7 +14,7 @@ public class SearchRankServiceImpl implements SearchRankService {
 
 	@Autowired
 	private SearchRankRepository searchRankRepository;
-
+ 
 	@Override
 	public SearchRank findBySearchword(String searchword) {
 		SearchRank searchOne = searchRankRepository.findBySearchword(searchword);
