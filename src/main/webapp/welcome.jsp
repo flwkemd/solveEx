@@ -24,7 +24,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  
-<script type="text/javascript" src="${contextPath}/resources/js/jquery.bootpag.min.js"></script>  
+<script src="${contextPath}/resources/js/jquery.bootpag.min.js"></script> 
 </head>
 <body>
 <div class="container">
@@ -70,20 +70,21 @@
 							</div>
 							
 							<hr>
+							
 							<div class="col">
 								<div class="form-group">
-									<label for="input-searchword">검색어 순위</label>
-										<div id ="searchRank">
-											<ol start="1" class="list2-group">
-												<c:if test="${not empty searchRank}">
-													<c:forEach var="searchRank" items="${searchRank}" varStatus="status">
-														<c:if test="${status.count < 6 }">
-															<li>${searchRank.searchword}</li>
-														</c:if>
-													</c:forEach>
-												</c:if> 
-											</ol>
-										</div>
+								<label for="input-searchword">검색어 순위</label>
+									<div id ="searchRank">
+										<ol start="1" class="list2-group">
+											<c:if test="${not empty searchRank}">
+												<c:forEach var="searchRank" items="${searchRank}" varStatus="status">
+													<c:if test="${status.count < 6 }">
+														<li>${searchRank.searchword}</li>
+													</c:if>
+												</c:forEach>
+											</c:if> 
+										</ol>
+									</div>
 								</div>	
 							</div>
 										
@@ -132,10 +133,10 @@
 									$("#place > ul").html("");
 									$("#place > #resultMessage").show();
 								} else {
-									/* <c:if test="${not empty res.meta.total_count}">
+									 /* if(res.meta.total_count != 0) {
 									$('.paging-layout').bootpag({
-									    total: $(res.meta.total_count),
-									    page:  $(res.meta.pageable_count),
+									    total: res.meta.total_count,
+									    page:  res.meta.pageable_count,
 									    maxVisible: 10,
 									    leaps: true,
 									    firstLastUse: true,
@@ -154,7 +155,7 @@
 										frm.page.value = num-1;
 										frm.submit();
 									});
-									</c:if> */
+									 } */
 									$("#place > #resultMessage").hide();
 									var html = "";
 									$(res.documents)
