@@ -10,6 +10,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * h2DB client 페이지 접근을 위한 X-Frame-Options 설정
+ * 
+ * @return
+ */
 
 public class CorsFilter implements Filter {
     @Override

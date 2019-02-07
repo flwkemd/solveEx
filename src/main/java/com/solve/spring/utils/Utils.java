@@ -1,6 +1,5 @@
 package com.solve.spring.utils;
 
-
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;

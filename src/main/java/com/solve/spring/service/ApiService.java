@@ -46,7 +46,7 @@ public class ApiService {
 	}
 
 	/**
-	* 책 정보 가져오기
+	* 장소 정보 가져오기
 	* 
 	* 데이터 참조 :
 	* https://developers.kakao.com/docs/restapi/search#%EC%B1%85-%EA%B2%80%EC%83%89

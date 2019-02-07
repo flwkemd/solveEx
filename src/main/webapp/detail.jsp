@@ -7,9 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>키워드 검색</title>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  
-<script type="text/javascript" src="${contextPath}/resources/js/jquery.bootpag.min.js"></script>  
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> 
+<script src="${contextPath}/resources/css/style.css"></script> 
 <style type="text/css">
 body.loading .container .media {
 	visibility: hidden;
@@ -104,7 +103,6 @@ body.loading .container .media {
 		});
 	</script>
 
-
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79dce2c081dab1506bf17e230df5503f&libraries=services,clusterer,drawing"></script>
 				<script>
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -137,7 +135,6 @@ function goBack() {
   window.history.back();
 }
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 </html>

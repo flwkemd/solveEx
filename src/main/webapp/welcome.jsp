@@ -242,40 +242,10 @@
 			return false;
 		}
 
-		/* $(document).ready(function() {
-			<c:if test="${not empty placePage.content }">
-			$('.paging-layout').bootpag({
-			    total: ${placePage.totalPages},
-			    page: ${placePage.number+1},
-			    maxVisible: 10,
-			    leaps: true,
-			    firstLastUse: true,
-			    first: '←',
-			    last: '→',
-			    wrapClass: 'pagination',
-			    activeClass: 'active',
-			    disabledClass: 'disabled',
-			    nextClass: 'next',
-			    prevClass: 'prev',
-			    lastClass: 'last',
-			    firstClass: 'first'
-			}).on("page", function(event, num){
-				console.log(num);
-				var frm = document.searchForm
-				frm.page.value = num-1;
-				frm.submit();
-			});
-			</c:if>
-		}); */
-
-		
 	</script>
-
 
 <!-- /container -->
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 </html>

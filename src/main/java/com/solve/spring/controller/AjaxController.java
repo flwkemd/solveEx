@@ -35,7 +35,6 @@ public class AjaxController {
 	 * 
 	 * @param req
 	 * @param res
-	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "/placeSearch")
@@ -62,7 +61,6 @@ public class AjaxController {
 	 * 
 	 * @param req
 	 * @param res
-	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "/getPlace/place_name/{place_name}", method = RequestMethod.GET)

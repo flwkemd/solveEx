@@ -14,6 +14,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	/**
+	 * user 아이디, 패스워드 인메모리 설정
+	 * 
+	 * @return
+	 */
+	
 	 @Override
 	    protected void configure(AuthenticationManagerBuilder auth) 
 	      throws Exception {

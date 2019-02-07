@@ -5,6 +5,12 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * h2DB client 페이지 접근을 위한 Config
+ * 
+ * @return
+ */
+
 @Configuration
 public class Config {
 	
