@@ -38,7 +38,6 @@ $ cd solveEx
 ### 실행(로컬)
 
 ```
-$ export JAVA_HOME="`/usr/libexec/java_home -v '1.8*'`"
 $ mvn clean compile
 $ mvn spring-boot:run
 $ curl -v localhost:8081
@@ -48,7 +47,6 @@ $ curl -v localhost:8081
 ### 배포용 (Jar 압축)
 
 ```
-$ export JAVA_HOME="`/usr/libexec/java_home -v '1.8*'`"
 $ mvn clean compile
 $ mvn pakage
 $ cd target
