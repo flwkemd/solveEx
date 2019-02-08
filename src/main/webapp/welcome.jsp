@@ -44,7 +44,7 @@
 			<div class="row">
 				<div class="col-12">
 					<form id="search_form" name="search_form" onsubmit="return submitSearch();">
-						<input type="hidden" name="page" value="1">
+						<input type="hidden" name="page" value="${pageNumber} }">
 						<div class="form-row">
 							<div class="col">
 								<div class="form-group">
@@ -133,29 +133,6 @@
 									$("#place > ul").html("");
 									$("#place > #resultMessage").show();
 								} else {
-									 /* if(res.meta.total_count != 0) {
-									$('.paging-layout').bootpag({
-									    total: res.meta.total_count,
-									    page:  res.meta.pageable_count,
-									    maxVisible: 10,
-									    leaps: true,
-									    firstLastUse: true,
-									    first: '←',
-									    last: '→',
-									    wrapClass: 'pagination',
-									    activeClass: 'active',
-									    disabledClass: 'disabled',
-									    nextClass: 'next',
-									    prevClass: 'prev',
-									    lastClass: 'last',
-									    firstClass: 'first'
-									}).on("page", function(event, num){
-										console.log(num);
-										var frm = document.search_form
-										frm.page.value = num-1;
-										frm.submit();
-									});
-									 } */
 									$("#place > #resultMessage").hide();
 									var html = "";
 									$(res.documents)
@@ -202,7 +179,7 @@
 																+"&x="
 																+ this.x
 																+"&place_name="
-																+ encodeURI(place_name.split(" "));
+																+ encodeURI(arr_place_name);
 														html +=  "'>"
 																+ this.place_name
 																+ "</a>"
@@ -215,16 +192,29 @@
 																+ this.category_group_name
 																+ "</div></dd></dl></li>";
 													});
-									if (!res.meta.is_end) {
-										html += "<li><button class='btn btn-primary btn-lg btn-block' onclick='submitSearch("
-												+ (pg + 1)
-												+ "); $(this).parent().remove();'>더보기 </button></li>";
-									}
-									if (pg > 1) {
-										$("#place > ul").append(html);
-									} else {
-										$("#place > ul").html(html);
-									}
+										$('.paging-layout').bootpag({
+										    total: Math.ceil(res.meta.total_count/15),
+										    page:  pg,
+										    maxVisible: 10,
+										    leaps: true,
+										    firstLastUse: true,
+										    first: '←',
+										    last: '→',
+										    wrapClass: 'pagination',
+										    activeClass: 'active',
+										    disabledClass: 'disabled',
+										    nextClass: 'next',
+										    prevClass: 'prev',
+										    lastClass: 'last',
+										    firstClass: 'first'
+										}).on("page", function(event, num){
+											console.log(num);
+												$("#place > ul").empty(html);
+											if (!res.meta.is_end) {
+													submitSearch(num);
+												}
+ 										});
+											$("#place > ul").html(html);
 								}
 								console.log(res);
 							},
@@ -241,6 +231,11 @@
 
 			return false;
 		}
+
+		$('#search_form select[name=category]').on('change',function(){
+			var frm = document.search_form
+			submitSearch(1);
+		});
 
 	</script>
 

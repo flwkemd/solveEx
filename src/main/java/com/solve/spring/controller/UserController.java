@@ -42,6 +42,8 @@ public class UserController {
     		model.addAttribute("searchRank", searchRank);
 
     		model.addAttribute("EnumCategory", EnumCategoryGroup.values());
+
+    		model.addAttribute("pageNumber", 1);
     	
         return "welcome";
     }

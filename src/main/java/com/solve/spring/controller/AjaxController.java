@@ -51,8 +51,10 @@ public class AjaxController {
 		}else {
 			searchRankService.updateCount(searchRankService.findBySearchword(searchword));	
 		}		
-				
-		Map<String, Object> result = apiService.placeSearch(searchword, category, page);
+		
+		String searchwordTrim = searchword.replaceAll("\\p{Z}", "");
+		
+		Map<String, Object> result = apiService.placeSearch(searchwordTrim, category, page);
 		
 		return result;
 	}
