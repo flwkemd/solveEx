@@ -20,9 +20,9 @@ public class ApiService {
 	private static final String API_REST_API_KEY = "9ec3ac48e69bf6523be0fab261bcf934";
 	private static final String API_PLACE_URL = "https://dapi.kakao.com/v2/local/search/keyword.json";
 
-	public Map<String, Object> placeSearch(String searchWord, String category) {
+	public Map<String, Object> placeSearch(String searchWord, String category, int page) {
 		
-		final String URL = API_PLACE_URL + "?query="+searchWord+ "&category_group_code=" + category;
+		final String URL = API_PLACE_URL + "?query="+searchWord+ "&category_group_code=" + category + "&page="+page;
 		Map<String, String> headers = new HashMap<>();
 		headers.put("Authorization", "KakaoAK " + API_REST_API_KEY);
 		Map<String, String> params = new HashMap<>();
@@ -56,7 +56,7 @@ public class ApiService {
 	*/
 	public Map<String, Object> getPlace(String place_name) {
 		Map<String, Object> place = null;
-		Map<String, Object> json = this.placeSearch(place_name, EnumCategoryGroup.전체.getCode());
+		Map<String, Object> json = this.placeSearch(place_name, EnumCategoryGroup.전체.getCode(), 1);
 		int cnt = (Integer) ((Map) json.get("meta")).get("total_count");
 		if (cnt > 0) {
 			place = (Map) ((List) json.get("documents")).get(0);

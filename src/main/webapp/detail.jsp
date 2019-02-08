@@ -8,7 +8,6 @@
 <title>키워드 검색</title>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> 
-<script src="${contextPath}/resources/css/style.css"></script> 
 <style type="text/css">
 body.loading .container .media {
 	visibility: hidden;

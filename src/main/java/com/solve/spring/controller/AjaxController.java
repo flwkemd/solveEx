@@ -40,7 +40,8 @@ public class AjaxController {
 	@RequestMapping(value = "/placeSearch")
 	public Map<String, Object> placeSearch(HttpServletRequest req, HttpServletResponse res,
 			@RequestParam("searchWord") String searchword,
-			@RequestParam(name = "category", defaultValue = "") String category) {
+			@RequestParam(name = "category", defaultValue = "") String category,
+			@RequestParam(name = "page", defaultValue = "1") int page) {
 		
 		if(searchRankService.findBySearchword(searchword) == null) {
 		SearchRank searchRank = new SearchRank();
@@ -51,7 +52,7 @@ public class AjaxController {
 			searchRankService.updateCount(searchRankService.findBySearchword(searchword));	
 		}		
 				
-		Map<String, Object> result = apiService.placeSearch(searchword, category);
+		Map<String, Object> result = apiService.placeSearch(searchword, category, page);
 		
 		return result;
 	}
@@ -66,7 +67,7 @@ public class AjaxController {
 	@RequestMapping(value = "/getPlace/place_name/{place_name}", method = RequestMethod.GET)
 	public Map<String, Object> getPlace(@PathVariable String place_name) {
 
-		Map<String, Object> result = apiService.placeSearch(place_name, EnumCategoryGroup.전체.getCode());
+		Map<String, Object> result = apiService.placeSearch(place_name, EnumCategoryGroup.전체.getCode(), 1);
 
 		return result;
 	}
